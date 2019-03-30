@@ -1,7 +1,6 @@
 from celery import Celery
 
-def make_celery():
-    from app import app
+def make_celery(app):
     celery = Celery(
         app.import_name,
         backend=app.config['CELERY_RESULT_BACKEND'],
@@ -17,7 +16,8 @@ def make_celery():
     celery.Task = ContextTask
     return celery
 
-embed_celery = make_celery()
+from app import app  # 导入app实例进行配置，可根据工厂函数不同的参数导入不同的app实例
+embed_celery = make_celery(app)
 
 
  
