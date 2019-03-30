@@ -17,7 +17,7 @@
 pip install -r requirements.txt
 ```
 
-## 启动项目/Exploration：
+## 启动项目/Exploration
 1. 进入项目根目录，运行flask
     ```angular2html
     flask run
@@ -48,13 +48,13 @@ pip install -r requirements.txt
 ```
 
 ## 说明/Explanation
-### 诉求
+### 诉求：
 - 能在 Celery 任务中使用 current_app 上下文。
 - 能使用app的配置来配置celery。
 - 在有蓝图的视图函数中使用celery。
 ### 实现
 - Celery 的任务要在 Flask 的上下文中执行，因此要重写 celeryapp.Task 类。[flask官方给出了示例](http://flask.pocoo.org/docs/1.0/patterns/celery/)。
-### 集成步骤
+### 集成步骤：
 1. 将要集成进flask的celery对象整成包，tasks.py中写入需要被消费的task们，当然也可以分成不同的task模块，最后在init中导入即可。
 0. 在视图函数中导入tasks中的task，导入时记得在函数内部导入，以免模块加载时使用尚等待初始化的app。
 
